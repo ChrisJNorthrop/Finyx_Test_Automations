@@ -1,0 +1,61 @@
+# User Admin Script
+# Dylan/Chris 09/2024
+#
+
+
+#function Test-AdminRights {
+    $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
+    Write-Output $currentUser
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal($currentUser)
+    echo $currentPrincipal
+    $adminRole = [Security.Principal.WindowsBuiltInRole]::Administrator
+    echo $adminRole
+
+    # comment
+
+    if ($currentPrincipal.IsInRole($adminRole)) {
+        Write-Output "The user has administrative rights."
+        return $true
+    } else {
+        Write-Output "The user does not have administrative rights."
+        return $false
+    }
+#}
+
+# Test-AdminRights
+
+ 
+# if ($true) {
+    # Get the current user's name and email
+    $userName = $principal.Identity.Name
+    echo $userName
+ 
+    # Attempt to get the user's email address (assuming it's based on their domain)
+   
+    $userEmail = "$($userName.Split('\')[1])@finyx.com"  
+   
+    # Compose the message to Dylan
+   # $result = @"
+#Hi Dylan,
+ 
+ 
+#This user is logged in as an admin.
+ 
+#User Name: $userName
+#User Email: $userEmail
+#"@
+ 
+    # Convert the results to HTML format
+    $htmlBody = $result | ConvertTo-Html | Out-String
+ 
+    # Define email parameters
+    #  $smtpServer = "finyx-com.mail.protection.outlook.com"
+   # $smtpFrom = "itsupport@Finyx.com"
+   # $smtpTo = "dylan.harley@finyx.com"
+   # $subject = "Local User Admin Status - Administrator Logged In"
+   # $body = "<html><body><h1>Local User Admin Status</h1>$htmlBody</body></html>"
+ 
+    # Send the email only if the user is an admin
+    # Send-MailMessage -To $smtpTo -From $smtpFrom -Subject $subject -Body $body -SmtpServer $smtpServer -BodyAsHtml
+}
+

@@ -21,7 +21,7 @@ $outputFile = Join-Path -Path $logDirectory -ChildPath "$scriptName.$date.log"
 "Script output goes here" | Out-File -FilePath $outputFile -Append
 
 # Example of a while-true loop
-$counter = 5
+# $counter = 5
 
 while ($true) {
     # Display the current counter value
